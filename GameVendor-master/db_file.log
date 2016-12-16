@@ -1,0 +1,5 @@
+/*C21*/SET SCHEMA PUBLIC
+INSERT INTO VENDORS VALUES(1,'online','Amazon')
+COMMIT
+INSERT INTO GAMES VALUES(3,1,'family cooperative','10.50','All Together',1)
+COMMIT
