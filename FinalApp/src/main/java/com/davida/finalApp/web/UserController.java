@@ -28,8 +28,19 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
+    void initLists(Model model) {
+        User user = new User();
+        List<Long> departments = new ArrayList<Long>();
+        departments.add(1L);
+        departments.add(2L);
+        departments.add(3L);
+        departments.add(4L);
+        departments.add(5L);
+        departments.add(6L);
+        model.addAttribute("user", user);
+        model.addAttribute("departments", departments);
+    }
+/*    void initLists(Model model) {
         User user = new User();
         List<String> departments = new ArrayList<String>();
         departments.add("GroBody");
@@ -40,6 +51,10 @@ public class UserController {
         departments.add("Bakery");
         model.addAttribute("user", user);
         model.addAttribute("departments", departments);
+    }*/
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String addUserForm(Model model) {
+        initLists(model);
         model.addAttribute("userForm", new User());
 
         return "registration";
@@ -51,6 +66,8 @@ public class UserController {
 
         model.addAttribute("storeNames", User.StoreName.values());
         if (bindingResult.hasErrors()) {
+            initLists(model);
+
             return "registration";
         }
 
@@ -60,7 +77,6 @@ public class UserController {
 
         return "redirect:/welcome";
     }
-
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

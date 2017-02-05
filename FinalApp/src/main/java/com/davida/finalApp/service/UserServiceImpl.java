@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
-//    @Autowired
-//    private DepartmentRepository departmentRepository;
+    @Autowired
+    private DepartmentRepository departmentRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(roleRepository.findAll()));
-//        user.setDepartments(new HashSet<>(departmentRepository.findAll()));
+        user.setDepartments(new HashSet<>(departmentRepository.findAll()));
 
         userRepository.save(user);
     }

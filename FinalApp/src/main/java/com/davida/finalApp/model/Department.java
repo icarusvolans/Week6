@@ -2,20 +2,20 @@ package com.davida.finalApp.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
-
-/*    public Department(long deptId, String[] deptType) {
-        this.deptId = deptId;
-        this.deptType = deptType;
-    }*/
 
 
 @Entity
+@Table(name = "department")
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    private String name;
 
     @ManyToMany(mappedBy = "departments")
     private Collection<User> users;
@@ -24,7 +24,7 @@ public class Department {
     @JoinTable(name = "departments_preferences", joinColumns = @JoinColumn(name = "department", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "preference_id", referencedColumnName = "id"))
     private Collection<Preference> preferences;
 
-    private String name;
+
 
     public Department() {
         super();

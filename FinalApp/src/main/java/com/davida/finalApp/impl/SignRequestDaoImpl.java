@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
 
 	@Override
 	public void insert(List<? extends SignRequest> SignRequests) {
-		String sql = "INSERT INTO signRequest " + "(id, launch_date, program, department, deliverable, copy) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO sign_request " + "(id, launch_date, program, department, deliverable, copy) VALUES (?, ?, ?, ?, ?, ?)";
 		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
 			public void setValues(PreparedStatement ps, int i) throws SQLException {
 				SignRequest signRequest = SignRequests.get(i);
@@ -48,9 +49,15 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
 
 	}
 
-	@Override
+    @Override
+    public void deleteRequest(List<? extends SignRequest> SignRequests) {
+        
+    }
+
+
+    @Override
 	public List<SignRequest> loadAllSignRequests() {
-		String sql = "SELECT * FROM signRequest";
+		String sql = "SELECT * FROM sign_request";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
 		List<SignRequest> result = new ArrayList<SignRequest>();
@@ -67,4 +74,59 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
 
 		return result;
 	}
+
+    @Override
+    public <S extends SignRequest> S save(S s) {
+        return null;
+    }
+
+    @Override
+    public <S extends SignRequest> Iterable<S> save(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public SignRequest findOne(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public boolean exists(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public Iterable<SignRequest> findAll() {
+        return null;
+    }
+
+    @Override
+    public Iterable<SignRequest> findAll(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void delete(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(SignRequest signRequest) {
+
+    }
+
+    @Override
+    public void delete(Iterable<? extends SignRequest> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

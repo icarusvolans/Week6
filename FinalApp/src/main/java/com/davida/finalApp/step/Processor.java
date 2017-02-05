@@ -15,11 +15,11 @@ public class Processor implements ItemProcessor<SignRequest, SignRequest> {
 	public SignRequest process(SignRequest signRequest) throws Exception {
 		Random r = new Random();
 		
-		final String launchDate = signRequest.getLaunchDate().toUpperCase();
-		final String program = signRequest.getProgram().toUpperCase();
-		final String department = signRequest.getDepartment().toUpperCase();
-		final String deliverable = signRequest.getDeliverable().toUpperCase();
-		final String copy = signRequest.getCopy().toUpperCase();
+		final String launchDate = signRequest.getLaunchDate();//.toUpperCase();
+		final String program = signRequest.getProgram();//.toUpperCase();
+		final String department = signRequest.getDepartment();//.toUpperCase();
+		final String deliverable = signRequest.getDeliverable();//.toUpperCase();
+		final String copy = signRequest.getCopy();//.toUpperCase();
 
 		final SignRequest fixedSignRequest = new SignRequest(r.nextLong(), launchDate, program, department, deliverable, copy);
 

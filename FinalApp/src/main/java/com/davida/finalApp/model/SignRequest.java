@@ -1,21 +1,40 @@
 package com.davida.finalApp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "sign_request")
+//@Table(name = "sign_request")
 public class SignRequest {
-	private long id;
+
+	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+//	@NotNull
+//	@Column(name = "Launch Date")
 	private String launchDate;
+
+//	@NotNull
+//	@Column(name = "Program")
 	private String program;
+
+//	@NotNull
+//	@Column(name = "Department")
 	private String department;
+
+//	@NotNull
+//	@Column(name = "Deliverable")
 	private String deliverable;
+
+//    @NotNull
+	@Column(name = "Copy", columnDefinition = "TEXT")
 	private String copy;
 
 	public SignRequest() {
 	}
 
-	public SignRequest(long id, String launchDate, String program, String department, String deliverable, String copy) {
+	public SignRequest(Long id, String launchDate, String program, String department, String deliverable, String copy) {
 		this.id = id;
 		this.launchDate = launchDate;
 		this.program = program;
@@ -23,13 +42,12 @@ public class SignRequest {
 		this.deliverable = deliverable;
 		this.copy = copy;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
