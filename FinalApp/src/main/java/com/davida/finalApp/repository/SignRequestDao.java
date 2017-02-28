@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SignRequestDao extends CrudRepository<SignRequest, Long>{
 	public void insert(List<? extends SignRequest> signRequests);
-	public void deleteRequest(List<? extends SignRequest> SignRequests);
+//	public void update(List<? extends SignRequest> SignRequests);
 	List<SignRequest> loadAllSignRequests();
 }

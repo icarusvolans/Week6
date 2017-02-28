@@ -11,8 +11,7 @@ import java.util.Collection;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @NotNull
     private String name;
@@ -37,11 +36,11 @@ public class Department {
 
     //
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 

@@ -66,12 +66,35 @@
                     <td><form:errors path="storeName" cssStyle="color: #ff0000;" /></td>
                 </tr>
         </div>
+        <br/>
+
+<%--        <div>
+            <tr>
+                <td>Choose department(s):</td>
+                <br/>
+            </tr>
+            <c:forEach items="${departments}" var="department">
+                <tr>
+                    <td><form:checkbox path="departments" value="${department}" label="${department.name}" /><br/></td>
+                    &lt;%&ndash;<td><c:out value="${department.name}" /><br/></td>&ndash;%&gt;
+                </tr>
+            </c:forEach>
+        </div>--%>
 
         <tr>
-            <td>Choose department(s):</td>
-            <td><form:checkboxes path="departments" items="${departments}" />
+            <td>Choose department(s):</td><br/>
+            <td><form:checkboxes path="departments" items="${departments}" /><br/>
             </td>
         </tr>
+
+<%--        <c:forEach items="${departments}" var="department" >
+<           form:checkboxes path="departments" value="${department.name}" />                <table>
+                    <tr>
+                        <td><input path="name" value="${signRequest.launchDate}" readonly/></td>
+                    </tr>
+                </table>
+            </form:form>
+        </c:forEach>--%>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form:form>

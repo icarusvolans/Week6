@@ -17,10 +17,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
-    @Autowired
-    private DepartmentRepository departmentRepository;
+/*    @Autowired
+    private DepartmentRepository departmentRepository;*/
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     @Override
     public void save(User user) {

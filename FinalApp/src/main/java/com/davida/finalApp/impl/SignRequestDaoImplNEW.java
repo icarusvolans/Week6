@@ -1,3 +1,4 @@
+/*
 package com.davida.finalApp.impl;
 
 
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao {
+public class SignRequestDaoImplNEW extends JdbcDaoSupport implements SignRequestDao {
 
     @Autowired
     DataSource dataSource;
@@ -33,8 +34,8 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
 
     @Override
     public void insert(List<? extends SignRequest> SignRequests) {
-//        String sql = "INSERT INTO sign_request (id, launch_date, program, department, deliverable, copy, flagged_deleted, edit_date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String sql = "INSERT INTO sign_request (id, launch_date, program, department, deliverable, copy, edit_deliverable, edit_copy, flagged_deleted, username, edit_date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET (edit_deliverable, edit_copy, flagged_deleted, username, edit_date_time)=(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO sign_request (id, launch_date, program, department, deliverable, copy, flagged_deleted, date_time, userName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//        String sql = "INSERT INTO sign_request (id, launch_date, program, department, deliverable, copy, edit_deliverable, edit_copy, flagged_deleted, edit_date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET (edit_deliverable, edit_copy, flagged_deleted , edit_date_time)=(?, ?, ?, ?)";
 
         getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -45,15 +46,9 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
                 ps.setString(4, signRequest.getDepartment());
                 ps.setString(5, signRequest.getDeliverable());
                 ps.setString(6, signRequest.getCopy());
-                ps.setString(7, signRequest.getEditDeliverable());
-                ps.setString(8, signRequest.getEditCopy());
-                ps.setBoolean(9, signRequest.isFlaggedDeleted());
-                ps.setTimestamp(10, Timestamp.valueOf(signRequest.getEditDateTime()));
-                ps.setString(11, signRequest.getEditDeliverable());
-                ps.setString(12, signRequest.getEditCopy());
-                ps.setBoolean(13, signRequest.isFlaggedDeleted());
-                ps.setString(14, signRequest.getUsername());
-                ps.setTimestamp(15, Timestamp.valueOf(signRequest.getEditDateTime()));
+                ps.setBoolean(7, signRequest.isFlaggedDeleted());
+                ps.setTimestamp(8, Timestamp.valueOf(signRequest.getEditDateTime()));
+
             }
 
             public int getBatchSize() {
@@ -139,3 +134,4 @@ public class SignRequestDaoImpl extends JdbcDaoSupport implements SignRequestDao
 
     }
 }
+*/

@@ -1,6 +1,7 @@
 package com.davida.finalApp.step;
 
 import com.davida.finalApp.model.SignRequest;
+import com.davida.finalApp.tokenizer.AbstractLineTokenizer;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -17,7 +18,7 @@ public class Reader {
 				System.out.println(reader.toString());
 				setLineTokenizer(new DelimitedLineTokenizer() {
 					{
-						setNames(new String[] {"localDate", "program", "department", "deliverable", "copy" });
+						setNames(new String[] {"localDate", "program", "department", "deliverable", "copy"});
 					}
 				});
 				setFieldSetMapper(new BeanWrapperFieldSetMapper<SignRequest>() {
@@ -30,3 +31,6 @@ public class Reader {
 		return reader;
 	}
 }
+
+
+

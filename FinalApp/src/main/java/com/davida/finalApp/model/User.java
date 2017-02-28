@@ -26,6 +26,9 @@ public class User {
     private String password;
     private String passwordConfirm;
 
+    @ManyToMany(mappedBy = "users")
+    private Collection<EditRequest> editRequests;
+
     @ManyToMany
     @JoinTable(name = "team_member_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
